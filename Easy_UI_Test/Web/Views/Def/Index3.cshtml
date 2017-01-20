@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Index3";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div style="margin:30px 50px;">
+    <div>
+        <select id="area" class="easyui-combobox" name="area" style="width:100px;">
+            <option value="0">所有区域</option>
+            <option value="1">区域1</option>
+            <option value="2">区域2</option>
+            <option value="3">区域3</option>
+        </select>
+        <select id="seter" class="easyui-combobox" name="seter" style="width:100px;">
+            <option value="0">所有自控设备</option>
+            <option value="1">自控设备1</option>
+            <option value="2">自控设备2</option>
+            <option value="3">自控设备3</option>
+        </select>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-search" onclick="searchInfo()">查询</a>
+    </div>
+    <div style="margin-top:20px;">
+        <div class="easyui-panel" title="灯1" collapsible="true" style="width:700px;">
+            <table border="1" class="tbfz">
+                <tr>
+                    <td rowspan="5" style="width:100px;text-align:center;background-color:lightblue;">灯1</td>
+                    <td>开灯光感阀值：<input class="easyui-validatebox" type="text" name="name" /> ~ <input class="easyui-validatebox" type="text" name="name" /></td>
+                    <td rowspan="5" style="width: 100px; text-align: center;"><input type="button" value="设置" /></td>
+                </tr>
+                <tr>
+                    <td>开灯光感阀值：<input class="easyui-validatebox" type="text" name="name" /> ~ <input class="easyui-validatebox" type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td>感应到车辆亮度阈值：<input class="easyui-validatebox" type="text" name="name" /> ~ <input class="easyui-validatebox" type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td>车辆离开亮度阈值：<input class="easyui-validatebox" type="text" name="name" /> ~ <input class="easyui-validatebox" type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td>车辆离开延迟时间：<input class="easyui-validatebox" type="text" name="name" /> ~ <input class="easyui-validatebox" type="text" name="name" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="margin-top:20px;">
+        <div class="easyui-panel" title="灯1" collapsible="true" style="width:700px;">
+            <table border="1" class="tbfz">
+                <tr>
+                    <td rowspan="5" style="width:100px;text-align:center;background-color:lightblue;">灯1</td>
+                    <td>开灯光感阀值：<input class="easyui-validatebox" type="text" name="name" /> ~ <input class="easyui-validatebox" type="text" name="name" /></td>
+                    <td rowspan="5" style="width: 100px; text-align: center;"><input type="button" value="设置" /></td>
+                </tr>
+                <tr>
+                    <td>开灯光感阀值：<input class="easyui-validatebox" type="text" name="name" /> ~ <input class="easyui-validatebox" type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td>感应到车辆亮度阈值：<input class="easyui-validatebox" type="text" name="name" /> ~ <input class="easyui-validatebox" type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td>车辆离开亮度阈值：<input class="easyui-validatebox" type="text" name="name" /> ~ <input class="easyui-validatebox" type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td>车辆离开延迟时间：<input class="easyui-validatebox" type="text" name="name" /> ~ <input class="easyui-validatebox" type="text" name="name" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

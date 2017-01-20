@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div style="margin: 50px 100px;">
+    <table id="dg" title="设备列表" class="easyui-datagrid" style="width: 900px; height: 400px"
+        toolbar="#toolbar"
+        rownumbers="true" fitcolumns="true" singleselect="true" pagination="true" pagesize="10">
+        <thead>
+            <tr>
+                <th field="AreaId" width="50">区域</th>
+                <th field="ControlId" width="50">自控设备</th>
+                <th field="Equip" width="50">设备名称</th>
+                <th field="Status" width="50">状态</th>
+                <th field="LastTime" width="50">更新时间</th>
+                <th field="ControlType" width="50">控制方式</th>
+                <th field="Operation" width="50">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div id="toolbar">
+        @*        <a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true" onclick="newUser()">添加</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-edit" plain="true" onclick="editUser()">编辑</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyUser()">删除</a>*@
+        <a href="#" class="easyui-linkbutton" plain="true"></a>
+        <div style="float: left; margin-left: 25px; margin-right: 20px;">
+            <select id="area" class="easyui-combobox" name="area" style="width: 100px;">
+                <option value="0">所有区域</option>
+                <option value="1">加油站</option>
+                <option value="2">便利店</option>
+                <option value="3">办公间</option>
+                <option value="4">餐厅</option>
+                <option value="5">厕所</option>
+                <option value="6">其他</option>
+            </select>
+            <select id="control" class="easyui-combobox" name="control" style="width: 100px;">
+                <option value="0">所有自控设备</option>
+                <option value="1">光感设备</option>
+                <option value="2">压感设备</option>
+                <option value="3">声感设备</option>
+                <option value="4">其他</option>
+            </select>
+            <a href="#" class="easyui-linkbutton" iconcls="icon-search" onclick="searchInfo()">查询</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function searchInfo() {
+        $('#dg').datagrid({ loadFilter: pagerFilter }).datagrid('loadData', getData());
+    };
+
+    function getData() {
+        var rows = [];
+        var area = $("input[name='area']").val();
+        var control = $("input[name='control']").val();
+        $.ajax({
+            url: '@Url.Action("GetDatas")',
+            type: "POST",
+            dataType: "json",
+            async: false,
+            data: { area: area, control: control },
+            success: function (data) {
+                $.each(data, function (index, item) {
+                    rows.push({
+                        AreaId: item.StrArea,
+                        ControlId: item.StrControl,
+                        Equip: item.Equip,
+                        Status: item.StrStatus,
+                        LastTime: item.StrLastTime,
+                        ControlType: item.StrControlType,
+                        Operation: "打开"
+                    });
+                });
+            }
+        });
+
+        return rows;
+    }
+
+    function pagerFilter(data) {
+        if (typeof data.length == 'number' && typeof data.splice == 'function') {	// is array
+            data = {
+                total: data.length,
+                rows: data
+            }
+        }
+        var dg = $(this);
+        var opts = dg.datagrid('options');
+        var pager = dg.datagrid('getPager');
+        pager.pagination({
+            onSelectPage: function (pageNum, pageSize) {
+                opts.pageNumber = pageNum;
+                opts.pageSize = pageSize;
+                pager.pagination('refresh', {
+                    pageNumber: pageNum,
+                    pageSize: pageSize
+                });
+                dg.datagrid('loadData', data);
+            }
+        });
+        if (!data.originalRows) {
+            data.originalRows = (data.rows);
+        }
+        var start = (opts.pageNumber - 1) * parseInt(opts.pageSize);
+        var end = start + parseInt(opts.pageSize);
+        data.rows = (data.originalRows.slice(start, end));
+        return data;
+    };
+
+    $(function () {
+        $('#dg').datagrid({ loadFilter: pagerFilter }).datagrid('loadData', getData());
+    });
+</script>

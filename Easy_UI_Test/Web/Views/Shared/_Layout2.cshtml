@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - XX系统</title>
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/jquery.easyui-1.4.5.min.js"></script>
+    <link href="~/Content/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/Content/Css/Style.css" rel="stylesheet" />
+</head>
+<body class="easyui-layout">
+    <input type="hidden" id="curId" value="" />
+    <input type="hidden" id="curName" value="" />
+    <div data-options="region:'north',border:false" style="height: 80px; background: #2596ea; padding: 10px">
+        <div class="fl ml15 mr15" style="width: 20%; height: 100%;">
+            <img width="100%" height="100%" src="~/Content/Image/logo.jpg" />
+        </div>
+        <div class="fl ml15 mr15" style="width: 50%; height: 100%;border-left: 1px solid black;border-right: 1px solid black;">
+            <h1 style="color:white; text-align:center;">系统名称-页面名称</h1>
+        </div>
+        <div class="fl ml15 mr15" style="width: 20%; height: 100%;">
+            <h3 class="curtime" style="font-family:'Microsoft YaHei'; color:black; text-align:center;"></h3>
+        </div>
+    </div>
+    <div data-options="region:'west'" style="width: 200px;">
+        <h2 style="text-align:center;background-color:lightgray;margin:0;padding:20px;">操作中心</h2>
+        <div style="padding:10px 20px;">
+            <ul class="easyui-tree">
+                <li><span><a href="@Url.Content("/Def/Index")">控制台</a></span></li>
+                <li><span><a href="@Url.Content("/Def/Index2")">实时曲线</a></span></li>
+                <li>
+                    <span>系统设置</span>
+                    <ul>
+                        <li><span><a href="@Url.Content("/Def/Index3")">阀门设置</a></span></li>
+                        <li><span><a href="@Url.Content("/Def/Index4")">密码修改</a></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div> 
+    <div data-options="region:'center'">
+        @RenderBody()
+    </div>
+    <div data-options="region:'south',border:false" style="height: 80px;">
+        <div class="footer">
+            <div id="bNav" class="bNav" style="background-color: pink; margin-top: 0px;">
+                <ul>
+                    <li><a href="index.aspx" title="Home">页面A</a></li>
+                    <li>|</li>
+                    <li><a href="info.aspx?info_id=8" title="About Us">页面A</a></li>
+                    <li>|</li>
+                    <li><a href="info.aspx?info_id=9" title="Department Design">页面A</a></li>
+                    <li>|</li>
+                    <li><a href="info.aspx?info_id=10" title="Law Declaration">页面A</a></li>
+                    <li>|</li>
+                    <li><a href="info.aspx?info_id=11" title="Contact Us">页面A</a></li>
+                    <li>|</li>
+                    <li><a href="info.aspx?info_id=12" title="Application Agent">页面A</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        startTime();
+        getcuruser();
+    });
+
+    function startTime() {
+        var name = $("#curName").val();
+        var today = new Date();
+        var y = today.getFullYear();
+        var M = today.getMonth() + 1;
+        var d = today.getDate();
+        var w = today.getDay();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        var week = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        // add a zero in front of numbers<10
+        m = checkTime(m);
+        s = checkTime(s);
+        $('.curtime').html('欢迎您:' + name + ' | <a  href="@Url.Content("/Def/Loginout")">退出</a></br> ' + h + ':' + m + ':' + s + ' ' + y + '年' + M + '月' + d + "日 " + week[w]);//可改变格式
+        t = setTimeout(startTime, 500);
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+    }
+
+    function getcuruser() {
+        $.ajax({
+            url: '@Url.Action("GetSessionUser")',
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.JResult) {
+                    $("#curId").val(data.JData.Id);
+                    $("#curName").val(data.JData.LoginName);
+                }
+                else {
+                    location.href = "/Def/Login";
+                }
+            }
+        });
+    }
+</script>
+</html>

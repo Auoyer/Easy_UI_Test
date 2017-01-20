@@ -1,0 +1,10 @@
+C:\Users\Administrator\Desktop\MVC_T\ViewModel\bin\Debug\ViewModel.dll
+C:\Users\Administrator\Desktop\MVC_T\ViewModel\bin\Debug\ViewModel.pdb
+C:\Users\Administrator\Desktop\MVC_T\ViewModel\obj\Debug\ViewModel.dll
+C:\Users\Administrator\Desktop\MVC_T\ViewModel\obj\Debug\ViewModel.pdb
+C:\Users\Administrator\Desktop\MVC_T\ViewModel\obj\Debug\ViewModel.csprojResolveAssemblyReference.cache
+C:\Users\RED\Desktop\MVC_T\ViewModel\bin\Debug\ViewModel.dll
+C:\Users\RED\Desktop\MVC_T\ViewModel\bin\Debug\ViewModel.pdb
+C:\Users\RED\Desktop\MVC_T\ViewModel\obj\Debug\ViewModel.csprojResolveAssemblyReference.cache
+C:\Users\RED\Desktop\MVC_T\ViewModel\obj\Debug\ViewModel.dll
+C:\Users\RED\Desktop\MVC_T\ViewModel\obj\Debug\ViewModel.pdb

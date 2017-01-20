@@ -1,0 +1,10 @@
+C:\Users\Administrator\Desktop\MVC_T\BusinessEntities\bin\Debug\BusinessEntities.dll
+C:\Users\Administrator\Desktop\MVC_T\BusinessEntities\bin\Debug\BusinessEntities.pdb
+C:\Users\Administrator\Desktop\MVC_T\BusinessEntities\obj\Debug\BusinessEntities.dll
+C:\Users\Administrator\Desktop\MVC_T\BusinessEntities\obj\Debug\BusinessEntities.pdb
+C:\Users\Administrator\Desktop\MVC_T\BusinessEntities\obj\Debug\BusinessEntities.csprojResolveAssemblyReference.cache
+C:\Users\RED\Desktop\MVC_T\BusinessEntities\bin\Debug\BusinessEntities.dll
+C:\Users\RED\Desktop\MVC_T\BusinessEntities\bin\Debug\BusinessEntities.pdb
+C:\Users\RED\Desktop\MVC_T\BusinessEntities\obj\Debug\BusinessEntities.csprojResolveAssemblyReference.cache
+C:\Users\RED\Desktop\MVC_T\BusinessEntities\obj\Debug\BusinessEntities.dll
+C:\Users\RED\Desktop\MVC_T\BusinessEntities\obj\Debug\BusinessEntities.pdb

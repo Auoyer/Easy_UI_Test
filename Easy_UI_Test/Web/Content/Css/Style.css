@@ -1,0 +1,51 @@
+﻿body {
+    border:0;
+    padding:0;
+    margin:0;
+    font-family:'Microsoft YaHei';
+    /*position:absolute;*/
+}
+
+.fl {
+    float: left;
+}
+
+#bNav {
+    margin-top: 10px;
+    background: #D9EBF5;
+    text-align: center;
+}
+
+#bNav ul {
+    padding: 25px 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#bNav ul li {
+    display: inline;
+    padding: 0 10px;
+}
+.footer {
+    display:inherit;
+    position: absolute;
+    bottom: 0;
+    width:100%;
+}
+.bo2 {
+    border:2px solid red;
+}
+.ml15 {
+     margin-left: 15px;
+}
+.mr15 {
+    margin-right: 15px;
+}
+.easyui-tree .tree-node {
+    height:25px;
+    line-height:25px;
+}
+
+.tbfz td {
+    padding:5px;
+}

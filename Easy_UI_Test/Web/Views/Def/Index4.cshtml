@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Index4";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div style="margin:30px auto;width:25%;height:50%;">
+    <form id="ff">
+        <table>
+            <tr>
+                <td>
+                    <label for="name">当前密码：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="text" name="oldPwd" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">新密码：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="password" name="newPwd" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">确认密码：</label>
+                </td>
+                <td>
+                    <input class="easyui-validatebox" type="password" name="rePwd" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-left:70px;">
+                    <input type="submit" value="登录" onclick="return checkpwd()">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script>
+    function checkpwd() {
+        var uid = $("#curId").val();
+        var oldpwd = $("input[name='oldPwd']").val();
+        var newpwd = $("input[name='newPwd']").val();
+        var repwd = $("input[name='rePwd']").val();
+
+        if (oldpwd == "") {
+            alert("请输入原密码！");
+            return false;
+        }
+        if (newpwd == "") {
+            alert("请输入新密码！");
+            return false;
+        }
+        if (repwd == "") {
+            alert("请再次输入新密码！");
+            return false;
+        }
+        if (oldpwd == newpwd) {
+            alert("新密码不能与旧密码相同！");
+            return false;
+        }
+        if (newpwd != repwd) {
+            alert("新密码必须与确认密码相同！");
+            return false;
+        }
+
+        $.ajax({
+            url: '@Url.Action("ResetPwd")',
+            type: "POST",
+            dataType: "json",
+            async: false,
+            data: { uId: uid, oldPwd: oldpwd, newPwd: newpwd },
+            success: function (data) {
+                if (data.JResult) {
+                    location.href = "/Def/Login";
+                }
+                else {
+                    alert(re.JData);
+                }
+            }
+        });
+
+        return false;
+    }
+</script>
